@@ -11,11 +11,10 @@ const setup = [['A', 'B', 'C', 'D', 'E', 'F'],
 
 function App() {
 
-    const difficulty = {length: 6, height: 6}
     return (
         <div className="App">
             <Container>
-                <GameGrid size={difficulty} setup={setup}/>
+                <GameGrid setup={setup}/>
             </Container>
         </div>
     );
