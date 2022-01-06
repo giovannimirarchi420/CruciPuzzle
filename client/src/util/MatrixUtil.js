@@ -3,12 +3,6 @@ const swap = (head, tail) => {
         let tmp = head;
         head = tail;
         tail = tmp;
-    } else {
-        if (head.j > tail.j) {
-            let tmp = head;
-            head = tail;
-            tail = tmp;
-        }
     }
     return {head, tail};
 }

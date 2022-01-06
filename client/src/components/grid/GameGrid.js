@@ -44,7 +44,6 @@ const GameGrid = (props) => {
         }
 
         setSelectedCells([{i: i, j: j}]);
-        setNewSelection(true);
     }
 
     return (
