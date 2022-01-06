@@ -7,21 +7,25 @@ const MyNavbar = (props) => {
     }
 
     return (
-        <Navbar bg="primary" variant="dark">
+        <Container fluid style={{margin: 0, padding: 0}}>
+            <Navbar bg="primary" variant="dark">
+            <Col>
                 <Nav className="me-auto">
-                    <Row>
-                        <Col>
-                            <Nav.Link href="#home" sm>Home</Nav.Link>
-                        </Col>
-                        <Col>
-                            <Nav.Link href="#features" sm>Features</Nav.Link>
-                        </Col>
-                        <Col>
-                            <Nav.Link href="#pricing" sm>Pricing</Nav.Link>
-                        </Col>
-                    </Row>
+                    <Nav.Link href="#home" style={{paddingLeft: 150}}>Home</Nav.Link>
                 </Nav>
-        </Navbar>
+            </Col>
+            <Col>
+                <Nav>
+                    <Nav.Link href="#Hall-of-fame" style={{paddingLeft: 150}}>Hall of Fame</Nav.Link>
+                </Nav>
+            </Col>
+            <Col>
+                <Nav>
+                    <Nav.Link href="#about" style={{paddingLeft: 150}}>About</Nav.Link>
+                </Nav>
+            </Col>
+            </Navbar>
+        </Container>
     );
 }
 
