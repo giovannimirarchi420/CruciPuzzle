@@ -1,7 +1,10 @@
 import './App.css';
 import GameGrid from './components/grid/GameGrid'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Container} from 'react-bootstrap';
+import {Link, Route, Routes, useLocation} from "react-router-dom";
+import MyNavbar from "./components/MyNavbar";
+import DifficultyModal from "./components/DifficultyModal";
+import PlayButton from "./components/PlayButton";
 
 const setup = [['A', 'B', 'C', 'D', 'E', 'F'],
     ['F', 'E', 'D', 'D', 'E', 'F'],
@@ -11,11 +14,28 @@ const setup = [['A', 'B', 'C', 'D', 'E', 'F'],
 
 function App() {
 
+    const difficultyRedirect = () => {
+        console.log("click");
+        return <Link to={'difficulty'}/>;
+    }
+
+    const gridRedirect = () => {
+        return <Link to={'play'}/>;
+    }
+    const location = useLocation();
+    console.log(location);
     return (
         <div className="App">
-            <Container>
-                <GameGrid setup={setup}/>
-            </Container>
+            <MyNavbar/>
+            <Routes>
+                <Route path='/' element={<PlayButton/>}/>
+                <Route path='difficulty' element={<DifficultyModal show={true}/>}/>
+                <Route path='play/beginner' element={<center><GameGrid setup={setup}/></center>}/>
+                <Route path='play/rookie' element={<center><GameGrid setup={setup}/></center>}/>
+                <Route path='play/intermediate' element={<center><GameGrid setup={setup}/></center>}/>
+                <Route path='play/command' element={<center><GameGrid setup={setup}/></center>}/>
+                <Route path='play/god' element={<center><GameGrid setup={setup}/></center>}/>
+            </Routes>
         </div>
     );
 }

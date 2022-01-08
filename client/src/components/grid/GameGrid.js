@@ -1,5 +1,5 @@
 import Square from "./Square";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {
     areOnTheSameCol,
     areOnTheSameRow,
@@ -8,15 +8,22 @@ import {
     getRowSelection,
     isDiagonal
 } from "../../util/MatrixUtil";
+import {useLocation} from "react-router-dom";
 
 
 const GameGrid = (props) => {
     const [selectedCells, setSelectedCells] = useState([]);
     const [newSelection, setNewSelection] = useState(true);
+    const location = useLocation();
 
     const isActive = (i, j) => {
         return selectedCells.some((cell) => cell.i === i && cell.j === j);
     }
+
+    useEffect(() => {
+        //get data grid
+        console.log("mock server call for " + location.pathname);
+    });
 
     const refreshGrid = (i, j) => {
         if (newSelection) {

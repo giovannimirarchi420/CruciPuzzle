@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+
+
 .App {
     text-align: center;
 }
@@ -35,4 +39,21 @@
     to {
         transform: rotate(360deg);
     }
+}
+
+.difficulty-choose-title {
+    text-align: center;
+    font-family: 'Krona One', sans-serif;
+}
+
+.difficulty-choose-button {
+    font-family: 'Luckiest Guy', cursive;
+}
+
+.difficulty-row {
+    padding-top: 10px;
+}
+
+.nav-text {
+    font-family: 'Luckiest Guy', cursive;
 }
