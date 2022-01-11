@@ -82,7 +82,7 @@ const getDiagonalSelection = (head, tail) => {
 }
 
 const getWord = (selection, grid) => {
-    const word = selection.map( (element) => {
+    const word = selection.map((element) => {
         return grid[element.i][element.j];
     });
     console.log(word.join(""));

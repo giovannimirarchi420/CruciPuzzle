@@ -6,8 +6,8 @@ import {
     getColumnSelection,
     getDiagonalSelection,
     getRowSelection,
-    isDiagonal,
-    getWord
+    getWord,
+    isDiagonal
 } from "../../util/MatrixUtil";
 import {useLocation} from "react-router-dom";
 import {getGrid, isValidWord} from "../../util/API";
@@ -30,7 +30,7 @@ const GameGrid = (props) => {
 
     useEffect(() => {
         getGrid(location)
-            .then( (grid) => setSetup(() => [...grid]));
+            .then((grid) => setSetup(() => [...grid]));
     }, [location]);
 
     const refreshGrid = (i, j) => {
@@ -92,7 +92,8 @@ const GameGrid = (props) => {
                         return (
                             <tr key={i}>{
                                 row.map((element, j) => {
-                                    return <td key={`${i}${j}`}><Square red={isRed(i, j)} key={`${i}${j}`} i={i} j={j} value={element}
+                                    return <td key={`${i}${j}`}><Square red={isRed(i, j)} key={`${i}${j}`} i={i} j={j}
+                                                                        value={element}
                                                                         selected={isActive(i, j)}
                                                                         refreshGrid={refreshGrid}/></td>;
                                 })

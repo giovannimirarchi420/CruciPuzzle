@@ -1,4 +1,3 @@
-
 /** English language alphabet. */
 const letters = [
     'a', 'b', 'c', 'd',
@@ -15,7 +14,7 @@ const letters = [
  * @see http://en.wikipedia.org/wiki/Letter_frequency
  */
 const frequencies = [
-    8167,  9659,  12441, 16694,
+    8167, 9659, 12441, 16694,
     29396, 31624, 33639, 39733,
     46699, 46852, 47624, 51649,
     54055, 60804, 68311, 70240,

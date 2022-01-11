@@ -1,7 +1,7 @@
 import './App.css';
 import GameGrid from './components/grid/GameGrid'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Link, Route, Routes, useLocation} from "react-router-dom";
+import {Link, Route, Routes} from "react-router-dom";
 import MyNavbar from "./components/MyNavbar";
 import DifficultyModal from "./components/DifficultyModal";
 import PlayButton from "./components/PlayButton";

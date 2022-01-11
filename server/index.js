@@ -15,10 +15,10 @@ app.get(constants.BASE_PATH, (req, res) => {
 
 app.get(constants.BASE_PATH + constants.GET_DIFFICULTY, async (req, res) => {
     const gridSize = await dao.getGridSize(req.params.level);
-    let grid = Array(gridSize.height).fill(null).map(()=>Array(gridSize.length).fill(null));
+    let grid = Array(gridSize.height).fill(null).map(() => Array(gridSize.length).fill(null));
 
-    for(let i = 0; i < gridSize.height; i++){
-        for(let j = 0; j < gridSize.length; j++){
+    for (let i = 0; i < gridSize.height; i++) {
+        for (let j = 0; j < gridSize.length; j++) {
             grid[i][j] = letterGenerator.randomAtoZ();
         }
     }
@@ -26,7 +26,7 @@ app.get(constants.BASE_PATH + constants.GET_DIFFICULTY, async (req, res) => {
 });
 
 app.get(constants.BASE_PATH + constants.IS_VALID_WORD, async (req, res) => {
-    if(dictionary.dictionary[req.query.word]){
+    if (dictionary.dictionary[req.query.word]) {
         res.status(200).json({
             valid: true,
             score: req.query.word.length
