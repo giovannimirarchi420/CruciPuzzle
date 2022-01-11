@@ -15,15 +15,13 @@ const setup = [['A', 'B', 'C', 'D', 'E', 'F'],
 function App() {
 
     const difficultyRedirect = () => {
-        console.log("click");
         return <Link to={'difficulty'}/>;
     }
 
     const gridRedirect = () => {
         return <Link to={'play'}/>;
     }
-    const location = useLocation();
-    console.log(location);
+
     return (
         <div className="App">
             <MyNavbar/>
