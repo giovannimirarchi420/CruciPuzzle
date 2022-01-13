@@ -11,6 +11,7 @@ import {
 } from "../../util/MatrixUtil";
 import {useLocation} from "react-router-dom";
 import {getGrid, isValidWord} from "../../util/API";
+import ScoreCounter from "../ScoreCounter.js";
 
 
 const GameGrid = (props) => {
@@ -18,6 +19,7 @@ const GameGrid = (props) => {
     const [newSelection, setNewSelection] = useState(true);
     const [redCells, setRedCells] = useState([]);
     const [setup, setSetup] = useState(props.setup);
+    const [score, setScore] = useState(0);
     const location = useLocation();
 
     const isActive = (i, j) => {
@@ -77,15 +79,32 @@ const GameGrid = (props) => {
         const word = getWord(selection, setup);
         if (await isValidWord(word) && word.length > 1) {
             console.log("valid");
+            setScore((score) => score+word.length);
             setRedCells((selectedWords) => {
                 return [...selectedWords, ...selection];
             });
         }
     }
 
+    const calculateSize = (location) => {
+        if(location.pathname.includes("beginner")) return "100px";
+        if(location.pathname.includes("rookie")) return "85px";
+        if(location.pathname.includes("intermediate")) return "55px";
+        if(location.pathname.includes("command")) return "35px";
+        if(location.pathname.includes("god")) return "30px";
+    }
+
+    const calculateFontSize = (location) => {
+        if(location.pathname.includes("beginner")) return "50px";
+        if(location.pathname.includes("rookie")) return "35px";
+        if(location.pathname.includes("intermediate")) return "25px";
+        if(location.pathname.includes("command")) return "15px";
+        if(location.pathname.includes("god")) return "15px";
+    }
+
     return (
         <>
-            <table>
+            <table style={{marginTop:"10vh"}}>
                 <tbody>
                 {
                     setup.map((row, i) => {
@@ -95,13 +114,17 @@ const GameGrid = (props) => {
                                     return <td key={`${i}${j}`}><Square red={isRed(i, j)} key={`${i}${j}`} i={i} j={j}
                                                                         value={element}
                                                                         selected={isActive(i, j)}
-                                                                        refreshGrid={refreshGrid}/></td>;
+                                                                        refreshGrid={refreshGrid}
+                                                                        buttonSize={calculateSize(location)}
+                                                                        fontSize={calculateFontSize(location)}/></td>;
                                 })
                             }</tr>);
                     })
                 }
                 </tbody>
             </table>
+
+            <center><ScoreCounter score={score}/></center>
         </>
     );
 }
