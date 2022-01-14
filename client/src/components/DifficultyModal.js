@@ -1,4 +1,4 @@
-import {Button, Container, Modal, Row} from "react-bootstrap";
+import {Button, CloseButton, Container, Modal, Row} from "react-bootstrap";
 import '../App.css';
 import {useState} from "react";
 import {Link} from "react-router-dom";
@@ -14,9 +14,7 @@ const DifficultyModal = (props) => {
     const [show, setShow] = useState(true);
 
     const handleClose = (difficulty) => {
-        console.log("ciao");
         setShow(false);
-        return <Link to='/play/`${difficulty}`'/>;
     }
     const handleShow = () => setShow(true);
     return (
@@ -26,10 +24,13 @@ const DifficultyModal = (props) => {
             aria-labelledby="contained-modal-title-vcenter"
             centered
         >
-            <Modal.Header closeButton onHide={handleClose}>
+            <Modal.Header onHide={handleClose}>
                 <Modal.Title id="contained-modal-title-vcenter">
                     <h1 className={"difficulty-choose-title"}>Choose game difficulty</h1>
                 </Modal.Title>
+                <Link to={"/"}>
+                    <CloseButton />
+                </Link>
             </Modal.Header>
             <Modal.Body>
                 <Container>

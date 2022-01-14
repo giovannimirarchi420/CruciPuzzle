@@ -12,6 +12,8 @@ import {
 import {useLocation} from "react-router-dom";
 import {getGrid, isValidWord} from "../../util/API";
 import ScoreCounter from "../ScoreCounter.js";
+import Score from "../Score";
+import ReactDOM from "react-dom";
 
 
 const GameGrid = (props) => {
@@ -20,6 +22,7 @@ const GameGrid = (props) => {
     const [redCells, setRedCells] = useState([]);
     const [setup, setSetup] = useState(props.setup);
     const [score, setScore] = useState(0);
+    const [isFinish, setFinish] = useState(false);
     const location = useLocation();
 
     const isActive = (i, j) => {
@@ -30,10 +33,19 @@ const GameGrid = (props) => {
         return redCells.some((cell) => cell.i === i && cell.j === j);
     }
 
+    //get data grid from BE
     useEffect(() => {
         getGrid(location)
             .then((grid) => setSetup(() => [...grid]));
     }, [location]);
+
+    //game time
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setFinish(true);
+        }, 60000);
+        return () => clearTimeout(timer);
+    }, []);
 
     const refreshGrid = (i, j) => {
         let selection = [];
@@ -125,6 +137,7 @@ const GameGrid = (props) => {
             </table>
 
             <center><ScoreCounter score={score}/></center>
+            <Score show={isFinish} score={score}/>
         </>
     );
 }

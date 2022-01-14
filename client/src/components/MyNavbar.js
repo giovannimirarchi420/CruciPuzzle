@@ -18,22 +18,22 @@ const MyNavbar = (props) => {
 
                 <Col>
                     <Nav>
-                        <Nav.Link className={"nav-text"} href="#home" style={style}>Home</Nav.Link>
+                        <Nav.Link className={"nav-text"} href="/" style={style}>Home</Nav.Link>
                     </Nav>
                 </Col>
                 <Col>
                     <Nav>
-                        <Nav.Link className={"nav-text"} href="#Hall-of-fame" style={style}>Hall of Fame</Nav.Link>
+                        <Nav.Link className={"nav-text"} href="/hall-of-fame" style={style}>Hall of Fame</Nav.Link>
                     </Nav>
                 </Col>
                 <Col>
                     <Nav>
-                        <Nav.Link className={"nav-text"} href="#about" style={style}>About</Nav.Link>
+                        <Nav.Link className={"nav-text"} href="/about" style={style}>About</Nav.Link>
                     </Nav>
                 </Col>
                 <Col>
                     <Nav>
-                        <Nav.Link className={"nav-text"} href="#login" style={style}><FiLogIn/></Nav.Link>
+                        <Nav.Link className={"nav-text"} href="/login" style={style}>Sign In <FiLogIn/></Nav.Link>
                     </Nav>
                 </Col>
             </Navbar>
