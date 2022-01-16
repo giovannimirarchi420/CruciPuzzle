@@ -1,10 +1,10 @@
 import {useEffect, useState} from "react";
-import RankCard from "./RankCard";
-import {getHistory} from "../util/API";
+import RankCard from "../../card/RankCard";
+import {getHistory} from "../../../util/API";
 import Card from "./Card";
 import {useNavigate} from "react-router-dom";
 import {Pagination} from "react-bootstrap";
-import '../App.css'
+import '../../../App.css'
 
 
 

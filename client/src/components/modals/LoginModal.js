@@ -1,7 +1,7 @@
 import {useState} from "react";
 import {Alert, Button, CloseButton, Form, Modal} from "react-bootstrap";
 import {Link, useNavigate} from "react-router-dom";
-import '../App.css'
+import '../../App.css'
 
 
 const LoginModal = (props) => {

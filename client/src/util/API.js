@@ -1,4 +1,4 @@
-import ranking from "../components/Ranking";
+import ranking from "../components/card/Ranking";
 
 const getGrid = async (location) => {
     console.log('api' + location.pathname);

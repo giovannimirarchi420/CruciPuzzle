@@ -1,6 +1,6 @@
 import RankCard from "./RankCard";
 import {useEffect, useState} from "react";
-import {getRanking} from "../util/API";
+import {getRanking} from "../../util/API";
 
 const Ranking = (props) => {
     const [ranking, setRanking] = useState([]);

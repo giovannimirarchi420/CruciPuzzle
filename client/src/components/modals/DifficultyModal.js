@@ -1,5 +1,5 @@
 import {Button, CloseButton, Container, Modal, Row} from "react-bootstrap";
-import '../App.css';
+import '../../App.css';
 import {useState} from "react";
 import {Link} from "react-router-dom";
 import {
@@ -8,7 +8,7 @@ import {
     DIFFICULTY_GOD_ROUTE,
     DIFFICULTY_INTERMEDIATE_ROUTE,
     DIFFICULTY_ROOKIE_ROUTE
-} from "../util/Constants";
+} from "../../util/Constants";
 
 const DifficultyModal = (props) => {
     const [show, setShow] = useState(true);

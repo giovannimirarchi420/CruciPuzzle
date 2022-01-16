@@ -11,10 +11,10 @@ import {
 } from "../../util/MatrixUtil";
 import {useLocation} from "react-router-dom";
 import {getGrid, isValidWord} from "../../util/API";
-import ScoreCounter from "../ScoreCounter.js";
-import Score from "../Score";
+import ScoreCounter from "./ScoreCounter.js";
+import Score from "./Score";
 import {insertScore} from '../../util/API'
-import StopButton from '../StopButton'
+import StopButton from './StopButton'
 import dayjs from "dayjs";
 
 
