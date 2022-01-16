@@ -70,3 +70,134 @@
 .font-game {
     font-family: 'Press Start 2P', cursive;
 }
+
+.logo {
+    width: auto;
+    height: 350px;
+}
+
+@font-face {
+    src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/394353/HighJakarta.ttf);
+    font-family: "Jakarta";
+}
+
+body {
+    background-color: #d3d3d3;
+}
+
+#container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.rank-box {
+    position: relative;
+    height: 125px;
+    width: 251px;
+    background-color: #0D6EFD;
+    border: 5px solid black;
+    overflow: hidden;
+    transform: translate(0%, 20%);
+    margin-bottom: 10px;
+}
+
+.player-image {
+    position: absolute;
+    float: left;
+    width: 40%;
+    left: 0px;
+    bottom: 0px;
+    z-index: 2;
+    animation: slidingFadeIn 1s 1;
+}
+
+.player-name {
+    position: absolute;
+    color: white;
+    font-family: Jakarta;
+    font-size: 3em;
+    font-style: italic;
+    text-align: center;
+    text-shadow: -5px 0 black, 0 5px black, 5px 0 black, 0 -5px black;
+    z-index: 5;
+    right: 3%;
+    bottom: -15%;
+    animation: slidingFadeIn 1s 1;
+}
+
+.player-score {
+    position: absolute;
+    color: #d30b0b;
+    font-family: Jakarta;
+    font-size: 3em;
+    font-style: italic;
+    text-align: center;
+    text-shadow: -5px 0 black, 0 5px black, 5px 0 black, 0 -5px black;
+    z-index: 5;
+    right: 70%;
+    bottom: 50%;
+    animation: slidingFadeIn 1s 1;
+}
+
+.ranking{
+    font-family: Jakarta;
+    font-size: 20px;
+    position: relative;
+    text-align: center;
+    color: white;
+    animation: fadeIn 1.5s 1;
+}
+.pagination {
+    display: flex;
+    justify-content: center;
+    padding-top: 5vh;
+}
+.ranking-container {
+    background-color: black;
+    border: 2px solid white;
+    border-top: 0px;
+    border-right: 0px;
+    position: relative;
+    height: 28%;
+    width: 12%;
+    float: right;
+}
+
+.date-container {
+    background-color: black;
+    border: 2px solid white;
+    border-top: 0px;
+    border-right: 0px;
+    position: relative;
+    height: 28%;
+    width: 50%;
+    float: right;
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        visibility: hidden;
+    }
+    to {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@keyframes slidingFadeIn {
+    0% {
+        transform: translateX(-50px);
+        opacity: 0;
+        visibility: hidden
+    }
+    100% {
+        transform: translateX(0px);
+        opacity: 1;
+        visibility: visible;
+    }
+}

@@ -17,6 +17,9 @@ const Score = (props) => {
                 </center>
 
                 <center style={{marginTop: "10vh"}}>
+                    {props.isLogged ? <h3 className={"font-game"}>Congratulation {props.username}</h3> : <></>}
+                    <div style={{ borderTop: "2px solid #fff ", marginLeft: 20, marginRight: 20 }}></div>
+
                     <h3 className={"font-game"}> Score: <span style={{color: "red"}}>{props.score}</span></h3>
                 </center>
             </Modal.Body>
@@ -26,7 +29,7 @@ const Score = (props) => {
                         <Button variant={"warning"} onClick={props.onHide} className={"font-game"}>Play Again</Button>
                     </Link>
                     <Link to={"../../"}>
-                        <Button variant={"danger"} onClick={props.onHide} className={"font-game"}>Home</Button>
+                        <Button style={{marginLeft: "5vh"}} variant={"danger"} onClick={props.onHide} className={"font-game"}>Leave</Button>
                     </Link>
                 </center>
             </Modal.Footer>
