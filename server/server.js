@@ -12,14 +12,11 @@ const port = 3001
 
 app.use(express.json());
 
-/*** Set up Passport ***/
-// set up the "username and password" login strategy
-// by setting a function to verify username and password
+/*** set up Passport ***/
 passport.use(new LocalStrategy( function (email, password, done) {
         dao.getUser(email, password)
             .then((user) => {
                 if (!user) {
-                    console.log("check not passed")
                     return done(null, false, {message: 'Incorrect username and/or password.'});
                 }
                 return done(null, user);
@@ -27,36 +24,30 @@ passport.use(new LocalStrategy( function (email, password, done) {
     }
 ));
 
-// serialize and de-serialize the user (user object <-> session)
-// we serialize the user id and we store it in the session: the session is very small in this way
 passport.serializeUser((user, done) => {
     done(null, user.id);
 });
 
-// starting from the data in the session, we extract the current (logged-in) user
 passport.deserializeUser(async (id, done) => {
     await dao.getUserById(id)
         .then(user => {
-            return done(null, user); // this will be available in req.user
+            return done(null, user);
         }).catch(err => {
         return done(err, false);
     });
 });
 
 app.use(session({
-    // by default, Passport uses a MemoryStore to keep track of the sessions
-    secret: 'a secret sentence not to share with anybody and anywhere, used to sign the session ID cookie',
+    secret: 'asupersecretsetenceguessme',
     resave: false,
     saveUninitialized: false
 }));
+/*** end set up Passport ***/
 
-// Init passport authentication
 app.use(passport.initialize());
-// persistent login sessions
 app.use(passport.session());
 
 const isLoggedIn = (req, res, next) => {
-    console.log(req.user);
     if(req.isAuthenticated()) {
         next();
         return;
@@ -67,6 +58,7 @@ const isLoggedIn = (req, res, next) => {
 
 /* Routes */
 
+// api/play/:level
 app.get(constants.BASE_PATH + constants.GET_DIFFICULTY, async (req, res) => {
     const gridSize = await dao.getGridSize(req.params.level);
     let grid = Array(gridSize.height).fill(null).map(() => Array(gridSize.length).fill(null));
@@ -78,7 +70,7 @@ app.get(constants.BASE_PATH + constants.GET_DIFFICULTY, async (req, res) => {
     }
     res.json(grid);
 });
-
+// api/play?word=
 app.get(constants.BASE_PATH + constants.IS_VALID_WORD, async (req, res) => {
     if (dictionary.dictionary[req.query.word]) {
         res.status(200).json({
@@ -93,6 +85,7 @@ app.get(constants.BASE_PATH + constants.IS_VALID_WORD, async (req, res) => {
     });
 });
 
+// api/session
 app.post(constants.BASE_PATH + constants.LOGIN, function(req, res, next) {
     passport.authenticate('local',(err, user, info) => {
         if (err)
@@ -110,31 +103,33 @@ app.post(constants.BASE_PATH + constants.LOGIN, function(req, res, next) {
     })(req, res, next);
 });
 
-app.post( constants.BASE_PATH + "/insert-score", isLoggedIn, (req, res) => {
+// api/insert-score
+app.post( constants.BASE_PATH + constants.INSERT_SCORE, isLoggedIn, (req, res) => {
     dao.insertScore(req.body.username, req.body.score, req.body.id, req.body.date)
         .then( () => res.status(201).end())
-        .catch( (err) => console.log(err));
+        .catch( (err) => res.status(400));
 })
 
+// api/session/end
 app.delete(constants.BASE_PATH + constants.LOGOUT, (req, res) => {
     req.logout();
     res.end();
 });
 
+// api/ranking
 app.get(constants.BASE_PATH + constants.RANKING, (req, res) => {
     dao.getRanking()
         .then( (result) => res.status(200).json(result))
         .catch( (err) => res.status(400).end());
 })
 
+// api/history
 app.get(constants.BASE_PATH + constants.HISTORY,isLoggedIn, (req, res) => {
     let { page, size } = req.query;
-    console.log(page,size, req.user.id)
     if (!page) page = 1;
     if (!size) size = 4;
     dao.getHistory(page, size, req.user.id)
         .then( (rows) => {
-            console.log(rows);
             res.status(200).json(rows)
         })
         .catch( (err) => res.status(400).end());

@@ -3,7 +3,8 @@ module.exports = Object.freeze({
     GET_DIFFICULTY: '/play/:level',
     IS_VALID_WORD: '/play',
     LOGIN : '/session',
-    LOGOUT: '/session/current',
+    LOGOUT: '/session/end',
     RANKING: '/ranking',
-    HISTORY: '/history'
+    HISTORY: '/history',
+    INSERT_SCORE: '/insert-score'
 });

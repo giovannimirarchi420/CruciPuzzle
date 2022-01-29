@@ -8,7 +8,9 @@ const LogoutModal = (props) => {
     return (
         <Modal show={true}>
             <Modal.Header>
-                <Modal.Title><center><h1 className={"font-game"}>Log Out</h1></center></Modal.Title>
+                <Modal.Title>
+                    <center><h1 className={"font-game"}>Log Out</h1></center>
+                </Modal.Title>
             </Modal.Header>
             <Modal.Body>
 
@@ -16,8 +18,9 @@ const LogoutModal = (props) => {
 
             </Modal.Body>
             <Modal.Footer>
-                    <Button style={{marginRight: "2vh"}} className={"font-game"} variant={"info"} onClick={props.logout}> Yes </Button>
-                    <Button className={"font-game"} variant={'dark'} onClick={() => navigate('/')}> Cancel </Button>
+                <Button style={{marginRight: "2vh"}} className={"font-game"} variant={"info"}
+                        onClick={props.logout}> Yes </Button>
+                <Button className={"font-game"} variant={'dark'} onClick={() => navigate('/')}> Cancel </Button>
             </Modal.Footer>
         </Modal>
     );

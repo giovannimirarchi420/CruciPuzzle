@@ -85,7 +85,6 @@ const getWord = (selection, grid) => {
     const word = selection.map((element) => {
         return grid[element.i][element.j];
     });
-    console.log(word.join(""));
     return word.join("");
 }
 

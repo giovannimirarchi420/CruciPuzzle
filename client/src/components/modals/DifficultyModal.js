@@ -26,10 +26,10 @@ const DifficultyModal = (props) => {
         >
             <Modal.Header onHide={handleClose}>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    <h1 className={"difficulty-choose-title"}>Choose game difficulty</h1>
+                    <h2 className={"font-game"}>Choose game difficulty</h2>
                 </Modal.Title>
                 <Link to={"/"}>
-                    <CloseButton />
+                    <CloseButton/>
                 </Link>
             </Modal.Header>
             <Modal.Body>

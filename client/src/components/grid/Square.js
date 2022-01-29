@@ -20,7 +20,8 @@ const Square = (props) => {
             <Button variant={props.red ? "danger" : "outline-primary"} style={style} onClick={() => {
                 props.refreshGrid(props.i, props.j);
                 setSelected((oldState) => !oldState);
-            }} active={props.selected}><span className={"square-text"} style={fontStyle}>{props.value.toUpperCase()}</span></Button>
+            }} active={props.selected}><span className={"square-text"}
+                                             style={fontStyle}>{props.value.toUpperCase()}</span></Button>
         </>
     );
 }

@@ -21,7 +21,7 @@ const StopButton = (props) => {
                     <h4 className={"font-game"}>Quit game</h4>
                     <p className={"font-game"}>
                         {props.isLogged ? "If you abort now your score will be saved anyway.\nAre you sure to quit?" :
-                                          "Are you sure to quit?"}
+                            "Are you sure to quit?"}
                     </p>
                 </Modal.Body>
                 <Modal.Footer>
