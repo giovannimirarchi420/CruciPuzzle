@@ -135,7 +135,8 @@ const GameGrid = (props) => {
     }
 
     return (
-        <>{error ? <ErrorModal show={true}/> : <>
+        <center>
+            <>{error ? <ErrorModal show={true}/> : <>
             <h3 style={{marginTop: "5vh"}} className={"font-game"}>{timer}</h3>
             <table style={{marginTop: "5vh"}}>
                 <tbody>
@@ -161,7 +162,8 @@ const GameGrid = (props) => {
             <Score username={props.user.username} islogged={isLogged.toString()} show={isFinish}
                    score={score * getLevelContextInfo(location).difficultyLevel}/>
             <StopButton finishGame={setFinish} isLogged={isLogged}/></>}
-        </>
+            </>
+        </center>
     );
 }
 

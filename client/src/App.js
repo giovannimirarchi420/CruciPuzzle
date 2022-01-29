@@ -63,15 +63,15 @@ function App() {
                 <Route path='/history' element={<History username={user.username} isLogged={loggedIn}/>}/>
                 <Route path='difficulty' element={<DifficultyModal show={true}/>}/>
                 <Route path='play/beginner'
-                       element={<center><GameGrid setup={initialSetup} user={user} isLogged={loggedIn}/></center>}/>
+                       element={<GameGrid setup={initialSetup} user={user} isLogged={loggedIn}/>}/>
                 <Route path='play/rookie'
-                       element={<center><GameGrid setup={initialSetup} user={user} isLogged={loggedIn}/></center>}/>
+                       element={<GameGrid setup={initialSetup} user={user} isLogged={loggedIn}/>}/>
                 <Route path='play/intermediate'
-                       element={<center><GameGrid setup={initialSetup} user={user} isLogged={loggedIn}/></center>}/>
+                       element={<GameGrid setup={initialSetup} user={user} isLogged={loggedIn}/>}/>
                 <Route path='play/command'
-                       element={<center><GameGrid setup={initialSetup} user={user} isLogged={loggedIn}/></center>}/>
+                       element={<GameGrid setup={initialSetup} user={user} isLogged={loggedIn}/>}/>
                 <Route path='play/god'
-                       element={<center><GameGrid setup={initialSetup} user={user} isLogged={loggedIn}/></center>}/>
+                       element={<GameGrid setup={initialSetup} user={user} isLogged={loggedIn}/>}/>
                 <Route path='play/*' element={<Navigate to={'/'}/>}/>
                 <Route path='/login' element={loggedIn ? <Navigate to={'/'}/> : <><PlayButton/><LoginModal show
                                                                                                            login={doLogIn}/></>}/>
