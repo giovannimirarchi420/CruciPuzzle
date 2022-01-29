@@ -1,83 +1,66 @@
-# Getting Started with Create React App
+# Exam #5: "Web Application I"
+## Student: s304661 MIRARCHI GIOVANNI
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## React Client Application Routes
 
-## Available Scripts
+- Route  `/`: Home Page
+- Route  `/about`: Just two words about the game
+- Route  `/history` : If logged, here the user can look at all the past played match (if not logged redirect on `/` )
+- Route  `/difficulty`: Game difficulty selection
+- Route  `/play/:difficulty`: Start game with one of the possible level (_beginner_, _rookie_, _intermediate_, _command_ and _god_)
+- Route  `/login`: Login page 
+- Route  `/logout`: Logout page
+- Route  `/hall-of-fame`: Hall of fame page
 
-In the project directory, you can run:
+## API Server
 
-### `npm start`
+- POST `/api/session` login
+  - The request body contains email and password
+  - response body contains user id, username and email, also a sessionID through cookies is provided
+- GET `/api/play/:level` game start
+  - `:level` parameter is the level difficulty based on description (beginner, rookie, intermediate...)
+  - response body contains a matrix with game letters
+- GET `/api/play` check found word
+  - The request take a query param called `word` containing the word found in the game
+  - response body contains a json object with `valid` setted at `true`\\`false` (it depends if the word is in the dictionary) and `score` that contains the score for that word (that is equal to `word.length`)
+- POST `/api/insert-score` used to store score of signed user
+  - The request take a body that contains username, score, id and date
+  - The server response with status 201 if ok, 400 else
+- DELETE `/session/end` logout
+  - The server response with status 200 OK. 
+- GET `/ranking`
+  - The server returns the first 5 top score, is an array containing objects with id, username, user_id, score and date
+- GET `/history`
+  - The request take two query params `page` and `size`
+  - The server returns an array of the first `size` elements from db with an offset of `page*size` elements, filtered by user_id (retrieved by session)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Database Tables
 
-### `npm test`
+- Table `USERS` - contains id, USERNAME, PASSWORD, EMAIL
+- Table `GAMES` - store the game history of all signed player and contains id, username, score, user_id(FK), date
+- Table `DIFFICULTY` - store the grid size based on difficulty level and contains id, description, height, length
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more
-information.
+## Main React Components
 
-### `npm run build`
+- `GameGrid` (in `src/compontens/grid/GameGrid.js`): this component is delegated to create all the game environment, maintains score, time, found words and all game logic, at the end of the game it do a fetch request to insert score on db (only if the user is logged)
+- `HallOfFame` (in `src/components/pages/HallOfFame.js`): it is delegated to fetch data from db and show it on UI
+- `About` (in `src/components/pages/About.js`): show some text about this project
+- `MyNavbar` (in `scr/components/MyNavbar.js`): create the navbar used for site navigation
+- `DifficultyModal`, `LoginModal`, `LogoutModal` and `ErrorModal` (in `src/components/modals/`): DifficultyModal appear when the user click on "Play" buttom, used to choose the game difficulty, LoginModal and LogoutModal are used for login and logout respectively, ErrorModal is shown when some error occurred (e.g. server down)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Screenshots
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![Screenshot](./img/screenshot.png) 
+![Screenshot](./img/screenshot_game_session.png)
 
-### `npm run eject`
+## Users Credentials
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will
-remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right
-into your project so you have full control over them. All of the commands except `eject` will still work, but they will
-point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you
-shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't
-customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in
-the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved
-here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved
-here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved
-here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved
-here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved
-here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved
-here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+| Email      | Password |
+|------------|----------|
+| test@crucipuzzle.it | test     |
+| player@crucipuzzle.it | test     |
+| test@test.it | test     |
+| gamerx@test.it | test     |
+| gamery@test.it | test     |

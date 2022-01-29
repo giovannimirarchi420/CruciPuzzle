@@ -1,38 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root {
+    --font-family: 'Press Start 2P', cursive;
+}
+
 .App {
     text-align: center;
 }
 
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+.difficulty-choose-button {
+    font-family: var(--font-family);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+.difficulty-row {
+    padding-top: 10px;
 }
 
-.App-header {
-    background-color: #282c34;
-    min-height: 100vh;
+.nav-text {
+    font-family: var(--font-family);
+}
+
+.about-title {
+    font-family: var(--font-family);
+    margin-top: 5vh;
+    color: yellow;
+    border-color: black;
+    text-shadow: 2px 0 0 #000000, -2px 0 0 #000000, 0 2px 0 #000000, 0 -2px 0 #000000, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+}
+
+.about-text {
+    font-family: var(--font-family);
+    font-size: 3vh;
+    margin-top: 10vh;
+}
+
+.score-counter {
+    font-family: var(--font-family);
+}
+
+.square-text {
+    font-family: var(--font-family);
+}
+
+.hall-of-fame {
+    margin-top: 15vh;
+    width: 60vw;
+    height: 40vh;
+}
+
+.hall-of-fame-text {
+    font-family: var(--font-family);
+    margin-top: 10vh;
+    color: white;
+    border-color: black;
+    text-shadow: 4px 0 0 #000000, -4px 0 0 #000000, 0 4px 0 #000000, 0 -4px 0 #000000, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+}
+
+.score-text {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 5vh;
+}
+
+.font-game {
+    font-family: 'Press Start 2P', cursive;
+}
+
+.logo {
+    width: auto;
+    height: 350px;
+}
+
+@font-face {
+    src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/394353/HighJakarta.ttf);
+    font-family: "Jakarta";
+}
+
+body {
+    background-color: #d3d3d3;
+}
+
+#container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    font-size: calc(10px + 2vmin);
+    position: relative;
+}
+
+.rank-box {
+    position: relative;
+    height: 125px;
+    width: 251px;
+    background-color: #0D6EFD;
+    border: 5px solid black;
+    overflow: hidden;
+    transform: translate(0%, 20%);
+    margin-bottom: 10px;
+}
+
+.player-image {
+    position: absolute;
+    float: left;
+    width: 40%;
+    left: 0px;
+    bottom: 0px;
+    z-index: 2;
+    animation: slidingFadeIn 1s 1;
+}
+
+.player-name {
+    position: absolute;
     color: white;
+    font-family: Jakarta;
+    font-size: 3em;
+    font-style: italic;
+    text-align: center;
+    text-shadow: -5px 0 black, 0 5px black, 5px 0 black, 0 -5px black;
+    z-index: 5;
+    right: 3%;
+    bottom: -15%;
+    animation: slidingFadeIn 1s 1;
 }
 
-.App-link {
-    color: #61dafb;
+.player-score {
+    position: absolute;
+    color: #d30b0b;
+    font-family: Jakarta;
+    font-size: 3em;
+    font-style: italic;
+    text-align: center;
+    text-shadow: -5px 0 black, 0 5px black, 5px 0 black, 0 -5px black;
+    z-index: 5;
+    right: 70%;
+    bottom: 50%;
+    animation: slidingFadeIn 1s 1;
 }
 
-@keyframes App-logo-spin {
+.ranking {
+    font-family: Jakarta;
+    font-size: 20px;
+    position: relative;
+    text-align: center;
+    color: white;
+    animation: fadeIn 1.5s 1;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    padding-top: 5vh;
+}
+
+.ranking-container {
+    background-color: black;
+    border: 2px solid white;
+    border-top: 0px;
+    border-right: 0px;
+    position: relative;
+    height: 28%;
+    width: 12%;
+    float: right;
+}
+
+.date-container {
+    background-color: black;
+    border: 2px solid white;
+    border-top: 0px;
+    border-right: 0px;
+    position: relative;
+    height: 28%;
+    width: 50%;
+    float: right;
+}
+
+
+@keyframes fadeIn {
     from {
-        transform: rotate(0deg);
+        opacity: 0;
+        visibility: hidden;
     }
     to {
-        transform: rotate(360deg);
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@keyframes slidingFadeIn {
+    0% {
+        transform: translateX(-50px);
+        opacity: 0;
+        visibility: hidden
+    }
+    100% {
+        transform: translateX(0px);
+        opacity: 1;
+        visibility: visible;
     }
 }
