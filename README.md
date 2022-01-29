@@ -1,5 +1,6 @@
-# Exam #5: "Web Application I"
-## Student: s304661 MIRARCHI GIOVANNI
+# Project for "Web Application I" class
+
+## Author: GIOVANNI MIRARCHI
 
 ## React Client Application Routes
 
@@ -64,3 +65,26 @@
 | test@test.it | test     |
 | gamerx@test.it | test     |
 | gamery@test.it | test     |
+
+
+## To start
+
+To start the application is required npm and nodejs on the machine.
+Execute following commands:
+
+```bash
+
+aw1_project$ cd client
+aw1_project/client$ npm install
+aw1_project/client$ cd ../server
+aw1_project/server$ npm install
+aw1_project/server$ node server.js
+
+-- Open another terminal --
+
+aw1_project$ cd client
+aw1_project/client$ npm start
+
+```
+
+The application now is started on localhost:3000
