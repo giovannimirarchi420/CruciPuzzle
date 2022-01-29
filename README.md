@@ -69,7 +69,7 @@
 
 ## To start
 
-To start the application is required npm and nodejs on the machine.
+To start the application npm and nodejs are required.
 Execute following commands:
 
 ```bash
